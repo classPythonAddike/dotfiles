@@ -103,6 +103,7 @@ groups = [
         "Editor",
         "Misc-1",
         "Misc-2",
+        "Misc-3"
     ]
 ]
 
@@ -163,27 +164,28 @@ screens = [
                     cursor_color=colors["nord_white_2"]
                 ),
                 
-                # widget.WindowName(foreground=colors["nord_dark_blue_0"], parse_text=str.title, max_chars=75),
-
-                widget.TaskList(
-                    parse_text=lambda _: "",
-                    border=colors["nord_dark_blue_3"]
+                widget.WindowName(
+                    max_chars=70,
+                    fmt="{:^70}",
+                    parse_text=str.title,
+                    foreground=colors["nord_white_0"],
+                    background=colors["nord_dark_blue_2"]
                 ),
 
                 widget.Systray(),
                 
                 widget.Wlan(
                     interface="wlo1",
-                    format='[{essid} {percent:2.0%} ]',
-                    disconnected_message="[Disconnected ]",
+                    format=' {essid} {percent:2.0%} 📡 ',
+                    disconnected_message="Disconnected 🌐 ",
                     foreground=colors["nord_light_blue_3"]
                 ),
 
-                widget.Volume(fmt="[{} 🔊]", foreground=colors["nord_purple"]),
+                widget.Volume(fmt=" {} 🔊 ", foreground=colors["nord_purple"]),
                 
                 widget.Backlight(
                     backlight_name="intel_backlight",
-                    format="[{percent:2.0%} 🔅",
+                    format=" {percent:2.0%} 🔅 ",
                     foreground=colors["nord_orange"]
                 ),
 
@@ -193,12 +195,12 @@ screens = [
                     empty_char="⚠",
                     notify_below=0.2,
                     low_percentage=0.2,
-                    format='{percent:2.0%} {char} ({hour:d}:{min:02d} left)]',
+                    format=' {percent:2.0%} {char} ',
                     update_interval=10,
                     foreground=colors["nord_yellow"]
                 ),
 
-                widget.Clock(format='[%d-%m %a %I:%M %p]', foreground=colors["nord_green"]),
+                widget.Clock(format=' %d-%m %a %I:%M %p 🕓', foreground=colors["nord_green"]),
             ],
             size=36,
             background=colors["nord_dark_blue_3"],
