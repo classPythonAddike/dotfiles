@@ -165,8 +165,8 @@ screens = [
                 ),
                 
                 widget.WindowName(
-                    max_chars=70,
-                    fmt="{:^70}",
+                    max_chars=73,
+                    fmt="{:^73}",
                     parse_text=str.title,
                     foreground=colors["nord_white_0"],
                     background=colors["nord_dark_blue_2"]
