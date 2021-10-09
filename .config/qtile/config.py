@@ -84,14 +84,15 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     
+
     # Volume modifiers
-    Key([], "F3", lazy.spawn("amixer -D pulse sset Master 2%+"), desc="Increase volume"),
-    Key([], "F2", lazy.spawn("amixer -D pulse sset Master 2%-"), desc="Decrease volume"),
-    Key([], "F1", lazy.spawn("amixer -D pulse set Master 1+ toggle"), desc="Mute speakers"),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -c 0 -q set Master 2%+"), desc="Increase volume"),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -c 0 -q set Master 2%-"), desc="Decrease volume"),
+    Key([], "XF86AudioMute", lazy.spawn("amixer -D pulse set Master 1+ toggle"), desc="Mute speakers"),
 
     # Display Brightness
-    Key([], "F5", lazy.spawn("brightnessctl -s set +2%"), desc="Increase display brightness"),
-    Key([], "F4", lazy.spawn("brightnessctl -s set 2%-"), desc="Decrease display brightness"),
+    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl -s set +2%"), desc="Increase display brightness"),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl -s set 2%-"), desc="Decrease display brightness"),
 ]
 
 groups = [
