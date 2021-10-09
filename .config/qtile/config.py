@@ -85,13 +85,13 @@ keys = [
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     
     # Volume modifiers
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -c 0 -q set Master 2%+"), desc="Increase volume"),
-    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -c 0 -q set Master 2%-"), desc="Decrease volume"),
-    Key([], "XF86AudioMute", lazy.spawn("amixer -D pulse set Master 1+ toggle"), desc="Mute speakers"),
+    Key([], "F3", lazy.spawn("amixer -D pulse sset Master 2%+"), desc="Increase volume"),
+    Key([], "F2", lazy.spawn("amixer -D pulse sset Master 2%-"), desc="Decrease volume"),
+    Key([], "F1", lazy.spawn("amixer -D pulse set Master 1+ toggle"), desc="Mute speakers"),
 
     # Display Brightness
-    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl -s set +2%"), desc="Increase display brightness"),
-    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl -s set 2%-"), desc="Decrease display brightness"),
+    Key([], "F5", lazy.spawn("brightnessctl -s set +2%"), desc="Increase display brightness"),
+    Key([], "F4", lazy.spawn("brightnessctl -s set 2%-"), desc="Decrease display brightness"),
 ]
 
 groups = [
@@ -103,7 +103,6 @@ groups = [
         "Editor",
         "Misc-1",
         "Misc-2",
-        "Misc-3"
     ]
 ]
 
@@ -138,7 +137,8 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                # Layout Icon
+                # Manjaro Icon
+                # TODO: Make it clickable, and display power options
                 widget.Image(
                     filename="~/.config/qtile/icon.png",
                     margin=5,
@@ -157,23 +157,34 @@ screens = [
                     font="JetBrainsMono Nerd Font Mono Bold"
                 ),
 
-                widget.TextBox("|", name="spacer", fontsize=20),
-                
+                # Run commands
                 widget.Prompt(
                     foreground=colors["nord_white_0"],
                     cursor_color=colors["nord_white_2"]
                 ),
                 
-                widget.WindowName(
-                    max_chars=73,
-                    fmt="{:^73}",
-                    parse_text=str.title,
-                    foreground=colors["nord_white_0"],
-                    background=colors["nord_dark_blue_2"]
-                ),
-
+                #widget.WindowName(
+                #    max_chars=73,
+                #    fmt="{:^73}",
+                #    parse_text=str.title,
+                #    foreground=colors["nord_white_0"],
+                #    background=colors["nord_dark_blue_2"]
+                #),
+                
+                # Spacer to center time widget
+                widget.Spacer(),
+                
+                # Display time
+                widget.Clock(format=' %d-%m-%Y %a %I:%M %p 🕓', foreground=colors["nord_green"]),
+                
+                # Spacer to center time widget
+                widget.Spacer(),
+                
+                # Display background apps
                 widget.Systray(),
                 
+                # Display connection info
+                # TODO: Make it clickable
                 widget.Wlan(
                     interface="wlo1",
                     format=' {essid} {percent:2.0%} 📡 ',
@@ -181,14 +192,19 @@ screens = [
                     foreground=colors["nord_light_blue_3"]
                 ),
 
+                # Show speaker volume
+                # Volume can be controlled by using F3, F2, and F1
                 widget.Volume(fmt=" {} 🔊 ", foreground=colors["nord_purple"]),
                 
+                # Show display brightness
+                # Brightness can be controlled by F4, and F5
                 widget.Backlight(
                     backlight_name="intel_backlight",
                     format=" {percent:2.0%} 🔅 ",
                     foreground=colors["nord_orange"]
                 ),
 
+                # Show battery levels
                 widget.Battery(
                     charge_char="⚡",
                     full_char="🔋",
@@ -199,17 +215,11 @@ screens = [
                     update_interval=10,
                     foreground=colors["nord_yellow"]
                 ),
-
-                widget.Clock(format=' %d-%m %a %I:%M %p 🕓', foreground=colors["nord_green"]),
             ],
             size=36,
             background=colors["nord_dark_blue_3"],
-            margin=[0, 0, window_padding, 0]
+            margin=window_padding
         ),
-
-        bottom=bar.Gap(size=window_padding),
-        right=bar.Gap(size=window_padding),
-        left=bar.Gap(size=window_padding),
 
         wallpaper="/home/pythonaddike/AllFolders/wallpapers/wild.png",
         wallpaper_mode="fill"
