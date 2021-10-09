@@ -1,6 +1,8 @@
-from libqtile import bar, layout, widget
+from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
+
+import os, subprocess
 
 mod = "mod4"
 terminal = "alacritty"
@@ -32,6 +34,12 @@ colors = {
 # Remove the `#`, only needed that to trigger the highlighter in editors
 for i in colors:
     colors[i] = colors[i][1:]
+
+
+@hook.subscribe.startup_once
+def autostart():
+    home = os.path.expanduser('~/.config/qtile/autostart.sh')
+    subprocess.call([home])
 
 
 keys = [
@@ -188,20 +196,20 @@ screens = [
                 # TODO: Make it clickable
                 widget.Wlan(
                     interface="wlo1",
-                    format=' {essid} {percent:2.0%} 📡 ',
-                    disconnected_message="Disconnected 🌐 ",
+                    format='{essid} ',
+                    disconnected_message="Disconnected ",
                     foreground=colors["nord_light_blue_3"]
                 ),
 
                 # Show speaker volume
                 # Volume can be controlled by using F3, F2, and F1
-                widget.Volume(fmt=" {} 🔊 ", foreground=colors["nord_purple"]),
+                widget.Volume(fmt="🔊 {} ", foreground=colors["nord_purple"]),
                 
                 # Show display brightness
                 # Brightness can be controlled by F4, and F5
                 widget.Backlight(
                     backlight_name="intel_backlight",
-                    format=" {percent:2.0%} 🔅 ",
+                    format="🔅 {percent:2.0%}",
                     foreground=colors["nord_orange"]
                 ),
 
@@ -212,7 +220,7 @@ screens = [
                     empty_char="⚠",
                     notify_below=0.2,
                     low_percentage=0.2,
-                    format=' {percent:2.0%} {char} ',
+                    format=' {char} {percent:2.0%} ',
                     update_interval=10,
                     foreground=colors["nord_yellow"]
                 ),
