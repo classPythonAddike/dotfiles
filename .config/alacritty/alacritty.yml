@@ -3,8 +3,10 @@ font:
     family: DroidSansMono Nerd Font Mono
   size: 14
 
+background_opacity: 0.9
+
 window:
-  background_opacity: 0.8
+  decorations: full
 
 env:
   WINIT_X11_SCALE_FACTOR: '1.0'

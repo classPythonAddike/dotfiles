@@ -44,7 +44,7 @@ def autostart():
 
 keys = [
     
-    Key(["control", "shift"], "Print", lazy.spawn('gnome-screenshot -i')),
+    Key(["control", "shift"], "Print", lazy.spawn('flameshot gui')),
     # Screenshots
 
     # Switch between windows
@@ -90,13 +90,16 @@ keys = [
 
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    
+
+    Key([mod], "r", lazy.spawn("ulauncher-toggle"), desc="Run Ulauncher"),
 
     # Volume modifiers
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -c 0 -q set Master 2%+"), desc="Increase volume"),
-    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -c 0 -q set Master 2%-"), desc="Decrease volume"),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -c 0 -q set Master 1%+"), desc="Increase volume"),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -c 0 -q set Master 1%-"), desc="Decrease volume"),
     Key([], "XF86AudioMute", lazy.spawn("amixer -D pulse set Master 1+ toggle"), desc="Mute speakers"),
+
+    Key([mod], "XF86AudioRaiseVolume", lazy.spawn("bash /home/pythonaddike/.config/qtile/increase_mic_input.sh"), desc="Increase mic sensitivity"),
+    Key([mod], "XF86AudioLowerVolume", lazy.spawn("bash /home/pythonaddike/.config/qtile/decrease_mic_input.sh"), desc="Decrease mic sensitivity"),
 
     # Display Brightness
     Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl -s set +2%"), desc="Increase display brightness"),
@@ -126,7 +129,7 @@ for i in range(len(groups)):
     )
 
 layouts = [
-    layout.Columns(
+    layout.bsp.Bsp(
         border_width=3,
         margin=window_padding,
         border_focus=colors["nord_light_blue_3"],
@@ -172,14 +175,6 @@ screens = [
                     cursor_color=colors["nord_white_2"]
                 ),
                 
-                #widget.WindowName(
-                #    max_chars=73,
-                #    fmt="{:^73}",
-                #    parse_text=str.title,
-                #    foreground=colors["nord_white_0"],
-                #    background=colors["nord_dark_blue_2"]
-                #),
-                
                 # Spacer to center time widget
                 widget.Spacer(),
                 
@@ -188,15 +183,14 @@ screens = [
                 
                 # Spacer to center time widget
                 widget.Spacer(),
-                
+
                 # Display background apps
                 widget.Systray(),
                 
                 # Display connection info
-                # TODO: Make it clickable
                 widget.Wlan(
                     interface="wlo1",
-                    format='{essid} ',
+                    format=' {essid} {percent:2.0%} ',
                     disconnected_message="Disconnected ",
                     foreground=colors["nord_light_blue_3"]
                 ),
@@ -204,7 +198,7 @@ screens = [
                 # Show speaker volume
                 # Volume can be controlled by using F3, F2, and F1
                 widget.Volume(fmt="🔊 {} ", foreground=colors["nord_purple"]),
-                
+
                 # Show display brightness
                 # Brightness can be controlled by F4, and F5
                 widget.Backlight(
@@ -249,16 +243,23 @@ dgroups_app_rules = []
 follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
-floating_layout = layout.Floating(float_rules=[
+
+floating_layout = layout.Floating(
+    float_rules=[
     # Run the utility of `xprop` to see the wm class and name of an X client.
-    *layout.Floating.default_float_rules,
-    Match(wm_class='confirmreset'),  # gitk
-    Match(wm_class='makebranch'),  # gitk
-    Match(wm_class='maketag'),  # gitk
-    Match(wm_class='ssh-askpass'),  # ssh-askpass
-    Match(title='branchdialog'),  # gitk
-    Match(title='pinentry'),  # GPG key password entry
-])
+        *layout.Floating.default_float_rules,
+        Match(wm_class='confirmreset'),  # gitk
+        Match(wm_class='makebranch'),  # gitk
+        Match(wm_class='maketag'),  # gitk
+        Match(wm_class='ssh-askpass'),  # ssh-askpass
+        Match(title='branchdialog'),  # gitk
+        Match(title='pinentry'),  # GPG key password entry
+    ],
+
+    border_width=0,
+    max_border_width=0,
+    fullscreen_border_width=0
+)
 
 auto_fullscreen = True
 focus_on_window_activation = "smart"
