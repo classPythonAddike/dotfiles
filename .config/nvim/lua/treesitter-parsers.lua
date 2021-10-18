@@ -1,5 +1,5 @@
 local M = {}
 
-M.parsers = { "python", "go", "html", "javascript", "lua", "css" }
+M.parsers = { "python", "go", "ruby", "lua", "dockerfile" }
 
 return M
