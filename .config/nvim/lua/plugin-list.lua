@@ -85,19 +85,10 @@ function M.PluginList()
 			},
 			cmd = "Telescope",
 		},
-		{
-			"tpope/vim-fugitive",
-			cmd = "Git",
-		},
 
 		{
 			"jiangmiao/auto-pairs",
 			ft = { "python", "lua", "vue", "svelte", "go", "vim", "css" },
-		},
-		{
-			"fatih/vim-go",
-			ft = { "go" },
-			run = ":GoUpdateBinaries",
 		},
 
 		{
