@@ -26,6 +26,10 @@ cmp.setup({
 	documentation = {
 		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
 	},
+
+	formatting = {
+		format = require("lspkind").cmp_format({with_text = true, maxwidth = 50})
+	}
 })
 
 local lsp_installer = require("nvim-lsp-installer")

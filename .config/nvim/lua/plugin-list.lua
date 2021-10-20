@@ -11,6 +11,7 @@ function M.PluginList()
 
 		"neovim/nvim-lspconfig",
 		"williamboman/nvim-lsp-installer",
+		"onsails/lspkind-nvim",
 
 		'hrsh7th/cmp-nvim-lsp',
 		'hrsh7th/cmp-buffer',
@@ -19,7 +20,22 @@ function M.PluginList()
 		'L3MON4D3/LuaSnip',
 		'saadparwaiz1/cmp_luasnip',
 
-		"shaunsingh/nord.nvim",
+		'EdenEast/nightfox.nvim',
+
+		{
+			"folke/which-key.nvim",
+			config = function()
+				require("which-key").setup {
+					layout = {
+						height = { min = 4, max = 30 },
+						width = { min = 30, max = 40 }
+					},
+					window = {
+						border = "single",
+					}
+				}
+			end
+		},
 
 		{
 			"kyazdani42/nvim-tree.lua",
@@ -32,13 +48,6 @@ function M.PluginList()
 		},
 		{
 			"hoob3rt/lualine.nvim",
-			config = function()
-				require("lualine").setup({
-					options = {
-						theme = "nord",
-					},
-				})
-			end,
 		},
 		{
 			"nvim-treesitter/nvim-treesitter",
@@ -62,13 +71,6 @@ function M.PluginList()
 					" only / and ? are enabled by default
 					call wilder#set_option('modes', ['/', '?', ':'])
 				]])
-			end,
-		},
-		{
-			"onsails/lspkind-nvim",
-			event = "InsertEnter",
-			config = function()
-				require("lspkind").init({ with_text = false })
 			end,
 		},
 		{

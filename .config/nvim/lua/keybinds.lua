@@ -1,17 +1,45 @@
 vim.cmd [[
 	let mapleader = "\<Space>"
-	set timeoutlen=500
+	set timeoutlen=300
 ]]
 
-vim.api.nvim_set_keymap("n", "<C-Q>", ":BufferClose<CR>", { noremap = true })
+local wk = require("which-key")
 
-vim.api.nvim_set_keymap("n", "<C-S>", ":w<CR>", { noremap = true })
-vim.api.nvim_set_keymap("i", "<C-S>", "<Esc>:w<CR>", { noremap = true })
+wk.register(
+	{
+		t = {
+			name = "+Tabs",
+			h = { "<cmd>bfirst", "First Tab" },
+			j = { "<cmd>bprevious<CR>", "Previous Tab" },
+			k = { "<cmd>bnext<CR>", "Next Tab" },
+			l = { "<cmd>blast<CR>", "Last Tab" },
+			q = { "<cmd>BufferClose<CR>", "Close Tab" }
+		},
+
+		r = {
+			name = "+Run Code",
+			r = { "<cmd>lua Run()<CR>", "Run Project" },
+			b = { "<cmd>lua Build()<CR>", "Compile Project" }
+		},
+
+		l = {
+			name = "+LSP",
+			c = { "<cmd>CommentToggle<CR>", "Toggle a comment" }
+		},
+
+		f = {
+			name = "+File Explorer",
+			e = { "<cmd>NvimTreeFocus<CR>", "Focus File Explorer" },
+			t = { "<cmd>Telescope file_browser<CR>", "Open Telescope file explorer" }
+		}
+	},
+	{
+		prefix = "<leader>"
+	}
+)
 
 vim.api.nvim_set_keymap("n", "<C-A>", "ggVG", { noremap = true })
 vim.api.nvim_set_keymap("i", "<C-A>", "<Esc> ggVG", { noremap = true })
-
-vim.api.nvim_set_keymap("n", "<C-F>", ":Telescope file_browser<CR>", { noremap = true })
 
 function Build()
 	local ft = vim.bo.filetype
@@ -29,20 +57,8 @@ function Run()
 	if ft == "go" then
 		vim.cmd(":TermExec cmd='go run .'")
 	elseif ft == "python" then
-		vim.cmd(":TermExec cmd='python3 %'")
+		vim.cmd(":TermExec cmd='python %'")
 	else
 		vim.cmd(":echom \"No run configurations set for filetype '" .. ft .. "'!\"")
 	end
 end
-
-vim.api.nvim_set_keymap("n", "<Leader>j", ":bprevious<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<Leader>k", ":bnext<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<Leader>l", ":blast<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<Leader>h", ":bfirst<CR>", { noremap = true })
-
-vim.api.nvim_set_keymap("n", "<Leader>b", ":lua Build()<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<Leader>r", ":lua Run()<CR>", { noremap = true })
-
-vim.api.nvim_set_keymap("n", "<Leader>c", ":CommentToggle<CR>", { noremap = true })
-
-vim.api.nvim_set_keymap("n", "<Leader>f", ":NvimTreeFocus<CR>", { noremap = true })
