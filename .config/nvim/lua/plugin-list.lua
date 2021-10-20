@@ -10,7 +10,7 @@ function M.PluginList()
 		"justinmk/vim-sneak",
 
 		"neovim/nvim-lspconfig",
-		"kabouzeid/nvim-lspinstall",
+		"williamboman/nvim-lsp-installer",
 
 		'hrsh7th/cmp-nvim-lsp',
 		'hrsh7th/cmp-buffer',
@@ -44,6 +44,10 @@ function M.PluginList()
 			"nvim-treesitter/nvim-treesitter",
 			run = ":TSUpdate",
 		},
+		
+		'roxma/nvim-yarp',
+		'roxma/vim-hug-neovim-rpc',
+
 		{
 			"gelguy/wilder.nvim",
 			run = ":UpdateRemotePlugins",
@@ -106,11 +110,9 @@ function M.PluginList()
 			config = function()
 				require("toggleterm").setup({
 					hide_numbers = false,
-					shade_filetypes = { "lua", "vim", "python", "go" },
-					shade_terminals = true,
-					shading_factor = "3",
 					start_in_insert = true,
 					persist_size = true,
+					shell = "/bin/bash",
 					direction = "float",
 					close_on_exit = true,
 
@@ -118,8 +120,12 @@ function M.PluginList()
 						border = "curved",
 						width = 110,
 						height = 20,
-						winblend = 3,
+						winblend = 0,
 					},
+					highlights = {
+						background = "Normal",
+						border = "Normal"
+					}
 				})
 			end,
 		},

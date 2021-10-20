@@ -28,25 +28,22 @@ cmp.setup({
 	},
 })
 
+local lsp_installer = require("nvim-lsp-installer")
 
-local function setup_servers()
-	require("lspinstall").setup()
-	local servers = require("lspinstall").installed_servers()
-	for _, server in pairs(servers) do
-		require("lspconfig")[server].setup({
-			settings = {
-				Lua = { diagnostics = { globals = { "vim" } } }
-			},
-			capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-		})
-	end
-end
+lsp_installer.on_server_ready(function(server)
+    local opts = {
+		capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+	}
 
-setup_servers()
+    -- (optional) Customize the options passed to the server
+    if server.name == "tsserver" then
+		opts.settings = {
+			Lua = {
+				diagnostics = { globals = { "vim" } }
+			}
+		}
+    end
 
--- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-require("lspinstall").post_install_hook = function()
-	setup_servers() -- reload installed servers
-	vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
-end
-
+    server:setup(opts)
+    vim.cmd [[ do User LspAttachBuffers ]]
+end)

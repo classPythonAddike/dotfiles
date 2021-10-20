@@ -22,6 +22,9 @@ vim.opt.termguicolors = true
 vim.cmd([[
 	command! W :w " Sometimes I type :W instead of :w
 	command! Q :q
+	command! Wq :wq
+
+	set clipboard=unnamedplus
 ]])
 
 vim.g.python_host_prog = "/usr/bin/python3"
