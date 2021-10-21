@@ -9,7 +9,7 @@ wk.register(
 	{
 		t = {
 			name = "+Tabs",
-			h = { "<cmd>bfirst", "First Tab" },
+			h = { "<cmd>bfirst<CR>", "First Tab" },
 			j = { "<cmd>bprevious<CR>", "Previous Tab" },
 			k = { "<cmd>bnext<CR>", "Next Tab" },
 			l = { "<cmd>blast<CR>", "Last Tab" },

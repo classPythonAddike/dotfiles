@@ -20,7 +20,7 @@ function M.PluginList()
 		'L3MON4D3/LuaSnip',
 		'saadparwaiz1/cmp_luasnip',
 
-		'EdenEast/nightfox.nvim',
+		'shaunsingh/nord.nvim',
 
 		{
 			"folke/which-key.nvim",

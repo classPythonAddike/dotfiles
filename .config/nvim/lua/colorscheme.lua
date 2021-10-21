@@ -1,28 +1,16 @@
 vim.opt.termguicolors = true
 
-local nightfox = require('nightfox')
+vim.g.nord_contrast = false
+vim.g.nord_borders = true
+vim.g.nord_disable_background = true
+vim.g.nord_enable_sidebar_background = true
 
-nightfox.setup {
-	fox = "nordfox",
-	transparent = true,
-	terminal_colors = false,
-	alt_nc = false,
-	
-	styles = {
-		comments = "italic",
-		keywords = "bold",
-		functions = "italic"
-	},
-	
-	inverse = {
-		match_paren = false
-	}
-}
+require("nord").set()
 
-nightfox.load()
+vim.cmd [[ colorscheme nord ]]
 
 require("lualine").setup {
 	options = {
-		theme = "nightfox",
+		theme = "nord",
 	},
 }
