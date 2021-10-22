@@ -128,6 +128,15 @@ for i in range(len(groups)):
         )
     )
 
+    keys.append(
+        Key(
+            [mod, "shift"],
+            str(i + 1),
+            lazy.window.togroup(groups[i].name, switch_group=True),
+            desc="Move window to group {}".format(groups[i].name)
+        )
+    )
+
 layouts = [
     layout.bsp.Bsp(
         border_width=3,
