@@ -24,7 +24,8 @@ wk.register(
 
 		l = {
 			name = "+LSP",
-			c = { "<cmd>CommentToggle<CR>", "Toggle a comment" }
+			c = { "<cmd>CommentToggle<CR>", "Toggle a comment" },
+			a = { "<cmd>CodeActionMenu<CR>", "Show Code Action Menu" }
 		},
 
 		f = {

@@ -6,7 +6,6 @@ function M.PluginList()
 
 		"glepnir/dashboard-nvim",
 
-		"rcarriga/nvim-notify",
 		"justinmk/vim-sneak",
 
 		"neovim/nvim-lspconfig",
@@ -17,10 +16,21 @@ function M.PluginList()
 		'hrsh7th/cmp-buffer',
 		"hrsh7th/nvim-cmp",
 
+		
 		'L3MON4D3/LuaSnip',
 		'saadparwaiz1/cmp_luasnip',
-
+	
+		'kosayoda/nvim-lightbulb',
+		
+		"hoob3rt/lualine.nvim",
+		
 		'shaunsingh/nord.nvim',
+
+
+		{
+			'weilbith/nvim-code-action-menu',
+			cmd = 'CodeActionMenu',
+		},
 
 		{
 			"folke/which-key.nvim",
@@ -47,32 +57,10 @@ function M.PluginList()
 			requires = "kyazdani42/nvim-web-devicons",
 		},
 		{
-			"hoob3rt/lualine.nvim",
-		},
-		{
 			"nvim-treesitter/nvim-treesitter",
 			run = ":TSUpdate",
 		},
 		
-		'roxma/nvim-yarp',
-		'roxma/vim-hug-neovim-rpc',
-
-		{
-			"gelguy/wilder.nvim",
-			run = ":UpdateRemotePlugins",
-			event = "VimEnter",
-			config = function()
-				vim.cmd([[
-					call wilder#enable_cmdline_enter()
-					set wildcharm=<Tab>
-					cmap <expr> <Tab> wilder#in_context() ? wilder#next() : "\<Tab>"
-					cmap <expr> <S-Tab> wilder#in_context() ? wilder#previous() : "\<S-Tab>"
-
-					" only / and ? are enabled by default
-					call wilder#set_option('modes', ['/', '?', ':'])
-				]])
-			end,
-		},
 		{
 			"terrortylor/nvim-comment",
 			cmd = "CommentToggle",
@@ -94,13 +82,13 @@ function M.PluginList()
 
 		{
 			"jiangmiao/auto-pairs",
-			ft = { "python", "lua", "vue", "svelte", "go", "vim", "css" },
+			ft = { "python", "lua", "vue", "svelte", "go", "vim", "css", "json" },
 		},
 
 		{
 			"lewis6991/gitsigns.nvim",
 			requires = { "nvim-lua/plenary.nvim" },
-			-- event = "InsertEnter",
+			event = "InsertEnter",
 			config = function()
 				require("gitsigns").setup()
 			end,
@@ -133,7 +121,7 @@ function M.PluginList()
 		},
 		{
 			"norcalli/nvim-colorizer.lua",
-			ft = { "svelte", "vue", "html", "css", "javascript" },
+			ft = { "svelte", "vue", "html", "css", "javascript", "python", "go" },
 			config = function()
 				local color_options = {
 					rgb_fn = true,
