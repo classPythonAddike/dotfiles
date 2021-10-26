@@ -7,7 +7,7 @@ import os, subprocess
 mod = "mod4"
 terminal = "alacritty"
 
-window_padding = 6
+window_padding = 8
 
 colors = {
     "nord_dark_blue_0": "#2E3440",
@@ -170,12 +170,16 @@ screens = [
                     active=colors["nord_light_blue_1"],
                     inactive=colors["nord_white_0"],
                     highlight_method="block",
-                    padding=5,
+                    padding=8,
+                    margin_x=-3,
                     this_current_screen_border=colors["nord_dark_blue_2"],
                     other_current_screen_border=colors["nord_light_blue_1"],
                     this_screen_border=colors["nord_light_blue_1"],
                     other_screen_border=colors["nord_light_blue_1"],
-                    font="JetBrainsMono Nerd Font Mono Bold"
+                    urgent_border=colors["nord_red"],
+                    font="JetBrainsMono Nerd Font Mono Bold",
+                    fontsize=16,
+                    rounded=False
                 ),
 
                 # Run commands
@@ -188,7 +192,10 @@ screens = [
                 widget.Spacer(),
                 
                 # Display time
-                widget.Clock(format=' %d-%m-%Y %a %I:%M %p 🕓', foreground=colors["nord_green"]),
+                widget.Clock(
+                    format=' %d-%m-%Y %a %I:%M %p 🕓',
+                    foreground=colors["nord_green"]
+                ),
                 
                 # Spacer to center time widget
                 widget.Spacer(),
@@ -201,30 +208,37 @@ screens = [
                     interface="wlo1",
                     format=' {essid} {percent:2.0%} ',
                     disconnected_message="Disconnected ",
-                    foreground=colors["nord_light_blue_3"]
+                    foreground=colors["nord_light_blue_3"],
+                    update_interval=5
                 ),
 
                 # Show speaker volume
                 # Volume can be controlled by using F3, F2, and F1
-                widget.Volume(fmt="🔊 {} ", foreground=colors["nord_purple"]),
+                widget.Volume(
+                    fmt="🔊 {} ",
+                    foreground=colors["nord_purple"],
+                    update_interval=1
+                ),
 
                 # Show display brightness
                 # Brightness can be controlled by F4, and F5
                 widget.Backlight(
                     backlight_name="intel_backlight",
                     format="🔅 {percent:2.0%}",
-                    foreground=colors["nord_orange"]
+                    foreground=colors["nord_orange"],
+                    update_interval=1
                 ),
 
                 # Show battery levels
                 widget.Battery(
                     charge_char="⚡",
                     full_char="🔋",
+                    unknown_char="🔋",
                     empty_char="⚠",
                     notify_below=0.2,
                     low_percentage=0.2,
                     format=' {char} {percent:2.0%} ',
-                    update_interval=10,
+                    update_interval=30,
                     foreground=colors["nord_yellow"]
                 ),
             ],
