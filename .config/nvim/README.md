@@ -14,17 +14,17 @@ Make sure you have Node, npm and Python3 installed. Then install `pynvim` with `
 
 ### Install
 
-1. Clone this config to your machine to `~/.config/nvim` (Linux) or `C:\Username\AppData\Local\nvim` (Windows). If you are on Windows, change the packer install path in [init.lua](/init.lua).
-2. Then open NeoVim (ignore any errors you encounter when it opens) and run `:PackerSync` to install the plugins. Note that this may take a while - some plugins like `vim-go` also install the go binaries. You may remove this from the plugins list in [plugin-list.lua](/lua/plugin-list.lua).
+1. Clone this config to your machine to `~/.config/nvim` (Linux) or `C:\Username\AppData\Local\nvim` (Windows). If you are on Windows, change the packer install path in [init.lua](init.lua).
+2. Then open NeoVim (ignore any errors you encounter when it opens) and run `:PackerSync` to install the plugins. Note that this may take a while - some plugins like `vim-go` also install the go binaries. You may remove this from the plugins list in [plugin-list.lua](lua/plugin-list.lua).
 3. Finally, restart NeoVim, and you should be good to go!
 
 ## Usage
 
-There are a few keys which are already mapped, such as `Ctrl-F`, `Ctrl-S`, and a couple of leader key (Space) maps. You can view the complete mapping in [keybinds.lua](/lua/keybinds.lua).
+There are a few keys which are already mapped, such as `Ctrl-F`, `Ctrl-S`, and a couple of leader key (Space) maps. You can view the complete mapping in [keybinds.lua](lua/keybinds.lua).
 
 You can install LSP servers with `:LspInstall`. I would recommend installing `lua` and `vim`.
 
-Install TreeSitter parsers with `:TSInstall`. You can tweak the permanently installed parsers in [treesitter-parsers.lua](/lua/treesitter-parsers.lua).
+Install TreeSitter parsers with `:TSInstall`. You can tweak the permanently installed parsers in [treesitter-parsers.lua](lua/treesitter-parsers.lua).
 
 You can add plugins in [plugin-list.lua](lua/plugin-list.lua). If you know of any plugins that you think might be useful, feel free to create and issue, or PR!
 
