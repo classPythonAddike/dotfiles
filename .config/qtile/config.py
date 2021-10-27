@@ -154,6 +154,8 @@ widget_defaults = dict(
 
 extension_defaults = widget_defaults.copy()
 
+separator = widget.TextBox(text="•", foreground="8888BB")
+
 screens = [
     Screen(
         top=bar.Bar(
@@ -164,7 +166,7 @@ screens = [
                     filename="~/.config/qtile/icon.png",
                     margin=5,
                 ),
-                
+
                 # Workspace list
                 widget.GroupBox(
                     active=colors["nord_light_blue_1"],
@@ -190,35 +192,45 @@ screens = [
                 
                 # Spacer to center time widget
                 widget.Spacer(),
+
+                separator,
                 
                 # Display time
                 widget.Clock(
-                    format=' %d-%m-%Y %a %I:%M %p 🕓',
+                    format='%d-%m-%Y %a %I:%M %p 🕓',
                     foreground=colors["nord_green"]
                 ),
+
+                separator,
                 
                 # Spacer to center time widget
                 widget.Spacer(),
 
                 # Display background apps
                 widget.Systray(),
+
+                separator,
                 
                 # Display connection info
                 widget.Wlan(
                     interface="wlo1",
-                    format=' {essid} {percent:2.0%} ',
-                    disconnected_message="Disconnected ",
+                    format='{essid} {percent:2.0%}',
+                    disconnected_message="🌐 Disconnected",
                     foreground=colors["nord_light_blue_3"],
-                    update_interval=5
+                    update_interval=2
                 ),
+
+                separator,
 
                 # Show speaker volume
                 # Volume can be controlled by using F3, F2, and F1
                 widget.Volume(
-                    fmt="🔊 {} ",
+                    fmt="🔊 {}",
                     foreground=colors["nord_purple"],
-                    update_interval=1
+                    update_interval=0.3
                 ),
+
+                separator,
 
                 # Show display brightness
                 # Brightness can be controlled by F4, and F5
@@ -226,8 +238,10 @@ screens = [
                     backlight_name="intel_backlight",
                     format="🔅 {percent:2.0%}",
                     foreground=colors["nord_orange"],
-                    update_interval=1
+                    update_interval=0.3
                 ),
+
+                separator,
 
                 # Show battery levels
                 widget.Battery(
@@ -237,7 +251,7 @@ screens = [
                     empty_char="⚠",
                     notify_below=0.2,
                     low_percentage=0.2,
-                    format=' {char} {percent:2.0%} ',
+                    format='{char} {percent:2.0%} ',
                     update_interval=30,
                     foreground=colors["nord_yellow"]
                 ),
