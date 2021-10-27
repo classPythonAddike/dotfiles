@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
 nm-applet &
-picom --experimental-backend &
 dunst &
+picom --experimental-backend &
 ulauncher --hide-window &

@@ -90,6 +90,7 @@ keys = [
 
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+    Key([mod, "shift"], "q", lazy.spawn("sflock"), desc="Lock Screen"),
 
     Key([mod], "r", lazy.spawn("ulauncher-toggle"), desc="Run Ulauncher"),
 
@@ -172,8 +173,7 @@ screens = [
                     active=colors["nord_light_blue_1"],
                     inactive=colors["nord_white_0"],
                     highlight_method="block",
-                    padding=8,
-                    margin_x=-3,
+                    padding_y=8,
                     this_current_screen_border=colors["nord_dark_blue_2"],
                     other_current_screen_border=colors["nord_light_blue_1"],
                     this_screen_border=colors["nord_light_blue_1"],
@@ -258,7 +258,7 @@ screens = [
             ],
             size=36,
             background=colors["nord_dark_blue_3"],
-            margin=window_padding
+            margin=0,
         ),
 
         wallpaper="/home/pythonaddike/AllFolders/wallpapers/wild.png",
