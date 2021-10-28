@@ -259,6 +259,7 @@ screens = [
             size=36,
             background=colors["nord_dark_blue_3"],
             margin=0,
+            opacity=0.9
         ),
 
         wallpaper="/home/pythonaddike/AllFolders/wallpapers/wild.png",

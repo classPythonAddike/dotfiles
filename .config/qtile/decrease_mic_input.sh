@@ -5,4 +5,4 @@ amixer sset Capture $new%
 
 new=$(amixer -- sget Capture | cut -b 3- | grep ^Front\ Right | cut -d"[" -f 2 | cut -d"%" -f 1)
 
-dunstify -a "changeVolume" -u low --raw_icon "/usr/share/icons/Adwaita/16x16/devices/audio-input-microphone-symbolic.symbolic.png" "Decreased Microphone Sensitivity" "Microphone Sensitivity: ${new}%"
+dunstify -a "changeVolume" -u low -t 1500 --raw_icon "/usr/share/icons/Adwaita/16x16/devices/audio-input-microphone-symbolic.symbolic.png" "Decreased Microphone Sensitivity" "Microphone Sensitivity: ${new}%"
