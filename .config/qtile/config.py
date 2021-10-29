@@ -262,7 +262,7 @@ screens = [
             opacity=0.9
         ),
 
-        wallpaper="/home/pythonaddike/AllFolders/wallpapers/wild.png",
+        wallpaper="/home/pythonaddike/AllFolders/wallpapers/minimal-25-nordified.jpg",
         wallpaper_mode="fill"
     ),
 ]
