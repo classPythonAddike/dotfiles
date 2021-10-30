@@ -3,4 +3,4 @@
 nm-applet &
 dunst &
 picom --experimental-backend &
-ulauncher --hide-window &
+ulauncher --no-extensions --hide-window --no-window-shadow &

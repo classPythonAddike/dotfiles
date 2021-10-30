@@ -92,7 +92,7 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod, "shift"], "q", lazy.spawn("sflock"), desc="Lock Screen"),
 
-    Key([mod], "r", lazy.spawn("ulauncher-toggle"), desc="Run Ulauncher"),
+    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 
     # Volume modifiers
     Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -c 0 -q set Master 1%+"), desc="Increase volume"),
@@ -185,10 +185,10 @@ screens = [
                 ),
 
                 # Run commands
-                # widget.Prompt(
-                #     foreground=colors["nord_white_0"],
-                #     cursor_color=colors["nord_white_2"]
-                # ),
+                widget.Prompt(
+                    foreground=colors["nord_white_0"],
+                    cursor_color=colors["nord_white_2"]
+                ),
                 
                 # Spacer to center time widget
                 widget.Spacer(),

@@ -11,6 +11,11 @@ window:
 env:
   WINIT_X11_SCALE_FACTOR: '1.0'
 
+shell:
+  program: /bin/bash
+  args:
+    - --login
+
 # Copyright (c) 2017-present Arctic Ice Studio <development@arcticicestudio.com>
 # Copyright (c) 2017-present Sven Greb <code@svengreb.de>
 
