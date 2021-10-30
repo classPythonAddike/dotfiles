@@ -6,8 +6,6 @@ function M.PluginList()
 
 		"glepnir/dashboard-nvim",
 
-		"justinmk/vim-sneak",
-
 		"neovim/nvim-lspconfig",
 		"williamboman/nvim-lsp-installer",
 		"onsails/lspkind-nvim",
@@ -16,7 +14,6 @@ function M.PluginList()
 		'hrsh7th/cmp-buffer',
 		"hrsh7th/nvim-cmp",
 
-		
 		'L3MON4D3/LuaSnip',
 		'saadparwaiz1/cmp_luasnip',
 	
@@ -26,7 +23,10 @@ function M.PluginList()
 		
 		'shaunsingh/nord.nvim',
 
-
+		{
+			"justinmk/vim-sneak",
+			event = "InsertEnter"
+		},
 		{
 			'weilbith/nvim-code-action-menu',
 			cmd = 'CodeActionMenu',
