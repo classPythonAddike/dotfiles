@@ -59,6 +59,8 @@ function Run()
 		vim.cmd(":TermExec cmd='go run .'")
 	elseif ft == "python" then
 		vim.cmd(":TermExec cmd='python %'")
+	elseif ft == "ruby" then
+		vim.cmd(":TermExec cmd='ruby %'")
 	else
 		vim.cmd(":echom \"No run configurations set for filetype '" .. ft .. "'!\"")
 	end
