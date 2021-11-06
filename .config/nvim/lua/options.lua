@@ -1,6 +1,6 @@
 vim.cmd("filetype plugin on")
 vim.cmd("syntax on")
-vim.cmd("filetype indent off")
+vim.cmd("filetype indent on")
 vim.cmd("set omnifunc=syntaxcomplete#Complete")
 vim.cmd("let $NVIM_TUI_ENABLE_TRUE_COLOR=1")
 
@@ -9,11 +9,11 @@ vim.completeopt = { "menuone", "noselect" }
 vim.opt.nu = true
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
-vim.opt.expandtab = false
+vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
-vim.opt.smarttab = false
+vim.opt.smarttab = true
 vim.opt.smartindent = true
-vim.opt.cindent = false
+vim.opt.cindent = true
 vim.opt.cursorline = true
 vim.opt.title = true
 vim.opt.cmdheight = 1
@@ -25,6 +25,9 @@ vim.cmd([[
 	command! Wq :wq
 
 	set clipboard=unnamedplus
+
+    nnoremap <expr> <Down> v:count ? 'j' : 'gj'
+    nnoremap <expr> <Up> v:count ? 'k' : 'gk'
 ]])
 
 vim.g.python_host_prog = "/usr/bin/python3"
