@@ -2,7 +2,8 @@ from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
-import os, subprocess
+import os
+import subprocess
 
 mod = "mod4"
 terminal = "alacritty"
@@ -189,12 +190,12 @@ screens = [
                     foreground=colors["nord_white_0"],
                     cursor_color=colors["nord_white_2"]
                 ),
-                
+
                 # Spacer to center time widget
                 widget.Spacer(),
 
                 separator,
-                
+
                 # Display time
                 widget.Clock(
                     format='%d-%m-%Y %a %I:%M %p 🕓',
@@ -202,7 +203,7 @@ screens = [
                 ),
 
                 separator,
-                
+
                 # Spacer to center time widget
                 widget.Spacer(),
 
@@ -210,7 +211,7 @@ screens = [
                 widget.Systray(),
 
                 separator,
-                
+
                 # Display connection info
                 widget.Wlan(
                     interface="wlo1",
@@ -284,7 +285,6 @@ cursor_warp = False
 
 floating_layout = layout.Floating(
     float_rules=[
-    # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,
         Match(wm_class='confirmreset'),  # gitk
         Match(wm_class='makebranch'),  # gitk
