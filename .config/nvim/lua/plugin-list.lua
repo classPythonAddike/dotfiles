@@ -26,10 +26,6 @@ function M.PluginList()
 		'shaunsingh/nord.nvim',
 
 		{
-			"/home/pythonaddike/AllFolders/github/com/classPythonAddike/docker-dev",
-		},
-
-		{
 			"justinmk/vim-sneak",
 			event = "InsertEnter"
 		},
@@ -88,7 +84,7 @@ function M.PluginList()
 
 		{
 			"jiangmiao/auto-pairs",
-			ft = { "python", "lua", "vue", "svelte", "go", "vim", "css", "json" },
+			ft = { "python", "lua", "vue", "svelte", "go", "vim", "css", "json", "lua" },
 		},
 
 		{
@@ -127,7 +123,7 @@ function M.PluginList()
 		},
 		{
 			"norcalli/nvim-colorizer.lua",
-			ft = { "svelte", "vue", "html", "css", "javascript", "python", "go" },
+			ft = { "svelte", "vue", "html", "css", "javascript", "python", "go", "lua" },
 			config = function()
 				local color_options = {
 					rgb_fn = true,
@@ -142,6 +138,8 @@ function M.PluginList()
 					vue = color_options,
 					svelte = color_options,
 				})
+
+                vim.cmd [[ :ColorizerAttachToBuffer ]]
 			end,
 		},
 	}
