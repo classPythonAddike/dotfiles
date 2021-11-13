@@ -245,7 +245,7 @@ screens = [
                 # Display connection info
                 widget.Wlan(
                     interface="wlo1",
-                    format="{essid} {percent:2.0%}",
+                    format="📡 {essid} {percent:2.0%}",
                     disconnected_message="🌐 Disconnected",
                     background=colors["nord_white_0"],
                     foreground=colors["nord_dark_blue_2"],

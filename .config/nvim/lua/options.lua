@@ -33,3 +33,21 @@ vim.cmd([[
 ]])
 
 vim.g.python_host_prog = "/usr/bin/python3"
+
+-- Neovide config
+vim.g.neovide_transparency = 1
+
+vim.g.neovide_cursor_vfx_mode = "torpedo"
+vim.g.neovide_cursor_vfx_particle_lifetime = 1.2
+
+vim.cmd [[
+
+    set guifont=DroidSansMono\ Nerd\ Font\ Mono:h18
+    
+    if exists("g:neovide")
+        let g:nord_disable_background = v:false
+        colorscheme nord
+    endif
+]]
+
+
