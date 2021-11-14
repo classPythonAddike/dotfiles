@@ -20,3 +20,10 @@ c.url.start_pages = ["https://duckduckgo.com/"]
 c.url.default_page = c.url.start_pages[0]
 
 c.downloads.location.directory = "/home/pythonaddike/AllFolders/Downloads_Copy/"
+
+c.tabs.padding = {
+    "bottom": 10,
+    "left": 10,
+    "top": 10,
+    "right": 10
+}
