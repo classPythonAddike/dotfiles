@@ -87,7 +87,7 @@ keys = [
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod, "shift"], "q", lazy.spawn("sflock"), desc="Lock Screen"),
+    Key([mod, "shift"], "q", lazy.spawn("light-locker-command -l"), desc="Lock Screen"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     # Volume modifiers
     Key(
