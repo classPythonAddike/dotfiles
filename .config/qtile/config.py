@@ -242,14 +242,11 @@ screens = [
                     padding=0,
                 ),
 
-                # Display connection info
-                widget.Wlan(
-                    interface="wlo1",
-                    format="📡 {essid} {percent:2.0%}",
-                    disconnected_message="🌐 Disconnected",
+                widget.Net(
                     background=colors["nord_white_0"],
                     foreground=colors["nord_dark_blue_2"],
-                    update_interval=2,
+                    format="📡 {down} ↓↑ {up}",
+                    max_chars=20
                 ),
 
                 widget.TextBox(
