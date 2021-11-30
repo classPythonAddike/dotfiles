@@ -29,10 +29,22 @@ function M.PluginList()
 			"justinmk/vim-sneak",
 			event = "InsertEnter"
 		},
-		{
-			'weilbith/nvim-code-action-menu',
-			cmd = 'CodeActionMenu',
-		},
+        {
+            'tamton-aquib/duck.nvim',
+            config = function()
+                require("duck").setup {
+                    character = "🦆",
+                    winblend = 0,
+                    speed = 1,
+                    width = 2
+                }
+                
+                vim.cmd("highlight Duck guibg=None")
+
+                vim.api.nvim_set_keymap('n', '<leader>dd', ':lua require("duck").hatch()<CR>', {noremap=true})
+                vim.api.nvim_set_keymap('n', '<leader>dk', ':lua require("duck").cook()<CR>', {noremap=true})
+            end
+        },
 
 		{
 			"folke/which-key.nvim",

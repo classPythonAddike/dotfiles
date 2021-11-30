@@ -218,22 +218,18 @@ screens = [
                     cursor_color=colors["nord_white_2"]
                 ),
 
-                # Spacer to center time widget
+                # Center time widget
                 widget.Spacer(),
 
-                # Display time
                 widget.Clock(
                     format="%d-%m-%Y %a %I:%M %p 🕓",
                     foreground=colors["nord_green"],
                 ),
  
-                # Spacer to center time widget
+                # Center time widget
                 widget.Spacer(),
 
-                # Display background apps
-                widget.Systray(
-                #    background=colors["nord_dark_blue_1"]
-                ),
+                widget.Systray(),
 
                 widget.TextBox(
                     text="",
@@ -257,7 +253,6 @@ screens = [
                     padding=0,
                 ),
 
-                # Show display brightness
                 # Brightness can be controlled by F4, and F5
                 widget.Backlight(
                     backlight_name="intel_backlight",
@@ -275,7 +270,6 @@ screens = [
                     padding=0,
                 ),
                 
-                # Show speaker volume
                 # Volume can be controlled by using F3, F2, and F1
                 widget.Volume(
                     fmt="🔊 {}",
@@ -283,8 +277,6 @@ screens = [
                     foreground=colors["nord_purple"],
                     update_interval=0.3
                 ),
-
-
 
                 widget.TextBox(
                     text="",
@@ -294,7 +286,6 @@ screens = [
                     padding=0,
                 ),
 
-                # Show battery levels
                 widget.Battery(
                     charge_char="▲",
                     discharge_char="▼",

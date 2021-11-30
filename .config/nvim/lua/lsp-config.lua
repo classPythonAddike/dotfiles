@@ -40,29 +40,7 @@ lsp_installer.on_server_ready(
             capabilities = capabilities
         }
 		
---        vim.cmd [[ do User LspAttachBuffers ]]
+       vim.cmd [[ do User LspAttachBuffers ]]
 	end
 )
-
-
-function UpdateLightBulb()
-	require'nvim-lightbulb'.update_lightbulb {
-		sign = {
-			enabled = false,
-		},
-	    float = {
-		    enabled = true,
-			text = "💡",
-			win_opts = {},
-		},
-	    virtual_text = {
-		    enabled = false,
-	    },
-		status_text = {
-			enabled = false,
-	    }
-	}
-end
-
-vim.cmd [[ autocmd CursorHold,CursorHoldI * lua UpdateLightBulb() ]]
 
