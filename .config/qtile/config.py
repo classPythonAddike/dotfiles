@@ -301,10 +301,10 @@ screens = [
                 ),
             ],
             size=32,
-            background=colors["nord_dark_blue_3"]+"ff",
+            background=colors["nord_dark_blue_3"],
             margin=0,
         ),
-        wallpaper="/home/pythonaddike/AllFolders/wallpapers/minimal-25-nordified.jpg",
+        wallpaper="/home/pythonaddike/AllFolders/wallpapers/wallhaven-lm6jm2.jpg",
         wallpaper_mode="fill",
     ),
 ]
