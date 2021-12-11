@@ -3,12 +3,13 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
 import os
+import datetime
 import subprocess
 
 mod = "mod4"
-terminal = "alacritty"
+terminal = "kitty"
 
-window_padding = 8
+window_padding = 12
 
 colors = {
     "nord_dark_blue_0": "#2E3440",
@@ -38,6 +39,13 @@ for i in colors:
 def autostart():
     home = os.path.expanduser("~/.config/qtile/autostart.sh")
     subprocess.call([home])
+
+    # Timer for JEE exam
+    now = datetime.datetime.now()
+    jee_date = datetime.datetime(year=2023, month=2, day=1)
+
+    weeks_left = (jee_date - now).days // 7
+    subprocess.call(["dunstify", "-a", "JEE", "-t", "30000", f"{weeks_left} weeks left for your JEE Mains! Good Luck!"])
 
 
 keys = [
@@ -302,7 +310,7 @@ screens = [
             ],
             size=32,
             background=colors["nord_dark_blue_3"],
-            margin=0,
+            margin=[window_padding, window_padding, 0, window_padding]
         ),
         wallpaper="/home/pythonaddike/AllFolders/wallpapers/wallhaven-lm6jm2.jpg",
         wallpaper_mode="fill",
@@ -343,6 +351,8 @@ floating_layout = layout.Floating(
     border_width=0,
     max_border_width=0,
     fullscreen_border_width=0,
+    border_focus=colors["nord_light_blue_0"],
+    border_normal=colors["nord_light_blue_0"]
 )
 
 auto_fullscreen = True
