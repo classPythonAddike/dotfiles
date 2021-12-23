@@ -32,7 +32,12 @@ wk.register(
 			name = "+File Explorer",
 			e = { "<cmd>NvimTreeFocus<CR>", "Focus File Explorer" },
 			t = { "<cmd>Telescope file_browser<CR>", "Open Telescope file explorer" }
-		}
+		},
+        d = {
+            name = "+Duck",
+            d = { "<cmd>lua require('duck').hatch()<CR>", "Hatch Duck" },
+            k = { "<cmd>lua require('duck').cook()<CR>", "Cook Duck" }
+        }
 	},
 	{
 		prefix = "<leader>"

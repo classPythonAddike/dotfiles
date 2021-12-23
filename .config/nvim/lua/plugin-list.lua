@@ -19,16 +19,19 @@ function M.PluginList()
 		'L3MON4D3/LuaSnip',
 		'saadparwaiz1/cmp_luasnip',
 	
-		'kosayoda/nvim-lightbulb',
-		
-		"hoob3rt/lualine.nvim",
-		
+		'hoob3rt/lualine.nvim',
+
 		'shaunsingh/nord.nvim',
 
 		{
 			"justinmk/vim-sneak",
 			event = "InsertEnter"
 		},
+
+        {
+            'ellisonleao/glow.nvim',
+            cmd = "Glow"
+        },
         
         {
             'tamton-aquib/duck.nvim',
@@ -39,9 +42,6 @@ function M.PluginList()
                     speed = 1,
                     width = 2
                 }
-                
-                vim.api.nvim_set_keymap('n', '<leader>dd', ':lua require("duck").hatch()<CR>', {noremap=true})
-                vim.api.nvim_set_keymap('n', '<leader>dk', ':lua require("duck").cook()<CR>', {noremap=true})
             end
         },
 
@@ -101,7 +101,6 @@ function M.PluginList()
 		{
 			"lewis6991/gitsigns.nvim",
 			requires = { "nvim-lua/plenary.nvim" },
-			event = "InsertEnter",
 			config = function()
 				require("gitsigns").setup()
 			end,
@@ -134,7 +133,6 @@ function M.PluginList()
 		},
 		{
 			"norcalli/nvim-colorizer.lua",
-			ft = { "svelte", "vue", "html", "css", "javascript", "python", "go", "lua" },
 			config = function()
 				local color_options = {
 					rgb_fn = true,
@@ -144,13 +142,12 @@ function M.PluginList()
 				}
 
 				require("colorizer").setup({
+                    '*';
 					html = color_options,
 					css = color_options,
 					vue = color_options,
 					svelte = color_options,
 				})
-
-                vim.cmd [[ :ColorizerAttachToBuffer ]]
 			end,
 		},
 	}

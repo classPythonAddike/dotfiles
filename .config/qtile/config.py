@@ -3,13 +3,14 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
 import os
+import re
 import datetime
 import subprocess
 
 mod = "mod4"
 terminal = "kitty"
 
-window_padding = 12
+window_padding = 9
 
 colors = {
     "nord_dark_blue_0": "#2E3440",
@@ -176,7 +177,7 @@ for i in range(len(groups)):
 
 layouts = [
     layout.bsp.Bsp(
-        border_width=3,
+        border_width=4,
         margin=window_padding,
         border_focus=colors["nord_light_blue_3"],
         border_normal=colors["nord_yellow"],
@@ -197,11 +198,13 @@ screens = [
     Screen(
         top=bar.Bar(
             [
+                widget.Spacer(length=5),
+
                 # Manjaro Icon
                 # TODO: Make it clickable, and display power options
                 widget.Image(
                     filename="~/.config/qtile/icon.png",
-                    margin=5,
+                    margin=6
                 ),
 
                 # Workspace list
@@ -210,6 +213,8 @@ screens = [
                     inactive=colors["nord_white_0"],
                     highlight_method="block",
                     padding_y=8,
+                    padding_x=0,
+                    spacing=0,
                     this_current_screen_border=colors["nord_dark_blue_2"],
                     other_current_screen_border=colors["nord_light_blue_1"],
                     this_screen_border=colors["nord_light_blue_1"],

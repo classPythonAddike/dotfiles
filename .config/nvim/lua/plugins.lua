@@ -10,3 +10,4 @@ return require("packer").startup({
 	compile_on_sync = true,
 	auto_clean = true,
 })
+

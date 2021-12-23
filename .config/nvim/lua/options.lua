@@ -50,4 +50,6 @@ vim.cmd [[
     endif
 ]]
 
-
+-- Glow config
+vim.g.glow_border = "rounded"
+vim.g.glow_width = 120
