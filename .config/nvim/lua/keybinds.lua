@@ -31,12 +31,16 @@ wk.register(
 		f = {
 			name = "+File Explorer",
 			e = { "<cmd>NvimTreeFocus<CR>", "Focus File Explorer" },
-			t = { "<cmd>Telescope file_browser<CR>", "Open Telescope file explorer" }
+			t = { "<cmd>Telescope file_browser<CR>", "Open Telescope File Explorer" }
 		},
         d = {
             name = "+Duck",
             d = { "<cmd>lua require('duck').hatch()<CR>", "Hatch Duck" },
             k = { "<cmd>lua require('duck').cook()<CR>", "Cook Duck" }
+        },
+        c = {
+            name = "+Code",
+            c = { '<cmd>let<Space>@/=""<CR>', "Clear Find Results" }
         }
 	},
 	{
