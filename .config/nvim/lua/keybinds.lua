@@ -25,8 +25,15 @@ wk.register(
 		l = {
 			name = "+LSP",
 			c = { "<cmd>CommentToggle<CR>", "Toggle a comment" },
-			a = { "<cmd>CodeActionMenu<CR>", "Show Code Action Menu" }
-		},
+            d = {
+                name = "+Diagnostics",
+                f = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Show Diagnostics In Popup" },
+                s = { "<cmd>lua vim.diagnostic.show()<CR>", "Show Diagnostics" },
+                h = { "<cmd>lua vim.diagnostic.hide()<CR>", "Hide Diagnostics" },
+                n = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Jump To Next Diagnostic" },
+                p = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Jump To Previous Diagnostic" }
+		    }
+        },
 
 		f = {
 			name = "+File Explorer",

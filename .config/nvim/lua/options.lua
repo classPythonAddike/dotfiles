@@ -53,3 +53,20 @@ vim.cmd [[
 -- Glow config
 vim.g.glow_border = "rounded"
 vim.g.glow_width = 120
+
+-- Discord RPC
+require("presence"):setup({
+    auto_update         = true,
+    neovim_image_text   = "The One True Text Editor",
+    _image              = "neovim",
+    log_level           = nil,
+    debounce_timeout    = 10,
+    enable_line_number  = true,
+})
+
+vim.diagnostic.config(
+    {
+        virtual_text = true,
+        signs = true
+    }
+)

@@ -20,7 +20,7 @@ function M.PluginList()
 		'saadparwaiz1/cmp_luasnip',
 	
 		'hoob3rt/lualine.nvim',
-
+        'andweeb/presence.nvim',
 		'shaunsingh/nord.nvim',
 
 		{

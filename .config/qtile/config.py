@@ -161,7 +161,7 @@ for i in range(len(groups)):
         Key(
             [mod],
             str(i + 1),
-            lazy.group[groups[i].name].toscreen(),
+            lazy.group[groups[i].name].toscreen(toggle=True),
             desc="Switch to group {}".format(groups[i].name),
         )
     )
